@@ -5,13 +5,13 @@ const Footer = () => {
     <footer className='bg-blue max-w-[100%] xl:max-w-full'>
       <div className='max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 xl:px-0'>
         <div className='grid grid-cols-1 gap-8 lg:grid-cols-3 xl:grid-cols-3'>
-          <div className='xl:flex xl:justify-start'>
+          <a href='/' className='xl:flex xl:justify-start'>
             <img
               src={"/assets/images/logo/euro-footer-logo.png"}
               className='mr-5 h-16 w-36 sm:h-16'
               alt='logo'
             />
-          </div>
+          </a>
           <div className='grid grid-cols-1 gap-0 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-2 lg:space-x-10 xl:space-x-28'>
             <div>
               <p className='font-medium text-white xl:text-xl'>

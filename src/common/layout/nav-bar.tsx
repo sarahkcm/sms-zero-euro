@@ -6,11 +6,11 @@ const NavBar = () => {
   return (
     <nav className='p-3 bg-blue'>
       <div className='container flex flex-wrap items-center justify-between mx-auto '>
-        <a href='#' className='flex items-center pl-2'>
+        <a href='/' className='flex items-center pl-2 pt-3'>
           <img
             src={"/assets/images/logo/euro-nav-logo.png"}
             alt=''
-            className='w-[80%] sm:w-16 lg:w-20 xl:w-24'
+            className='w-[80%]'
           />
         </a>
         <div className='flex flex-row space-x-2'>
