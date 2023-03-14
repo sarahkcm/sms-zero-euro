@@ -11,10 +11,8 @@ const HomeComponent = () => {
       <div className='px-4 py-8'>
         <CartOffre1 />
       </div>
-      <div className='px-4 pb-8'>
-        <img src='/assets/images/offre_150.png' />
-      </div>
-      <div className='px-4 pb-8'>
+      <div className='px-4 pb-8 flex flex-col space-y-8 justify-center '>
+        <img src='/assets/images/offre_150.png' className="md:hidden" />
         <CartOffre2 />
       </div>
     </div>
