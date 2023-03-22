@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
   return (
@@ -53,7 +53,7 @@ const Footer = () => {
                       <img
                         src={"/assets/images/icons/Facebook.png"}
                         alt=''
-                        className='w-8 h-8'
+                        className='w-8 h-8 border-2 border-white rounded-full'
                       />
                     </a>
                   </div>
@@ -62,7 +62,7 @@ const Footer = () => {
                       <img
                         src={"/assets/images/icons/instagram.png"}
                         alt=''
-                        className='w-8 h-8'
+                        className='w-8 h-8 border-2 border-white rounded-full'
                       />
                     </a>
                   </div>

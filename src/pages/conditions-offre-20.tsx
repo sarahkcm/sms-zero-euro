@@ -16,7 +16,7 @@ const ConditionsOffre20 = () => {
           small={"/assets/images/blue_small.png"}
           big={"/assets/images/blue_big.png"}
         />
-        <ul>
+        <ul className="py-2">
           {ConditionsOffre20Data.map(({ id, text }, index) => {
             return (
               <div key={id} className='p-4'>

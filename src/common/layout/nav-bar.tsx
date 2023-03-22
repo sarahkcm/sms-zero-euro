@@ -14,8 +14,14 @@ const NavBar = () => {
           />
         </a>
         <div className='flex flex-row space-x-2'>
-          <img src='/assets/images/icons/Facebook.png' className='w-8' />
-          <img src='/assets/images/icons/instagram.png' className='w-8' />
+          <img
+            src='/assets/images/icons/Facebook.png'
+            className='w-8 border-2 border-white rounded-full'
+          />
+          <img
+            src='/assets/images/icons/instagram.png'
+            className='w-8 border-2 border-white rounded-full'
+          />
         </div>
       </div>
     </nav>

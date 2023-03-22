@@ -1,7 +1,52 @@
-import React from "react";
-import Button from "../Home/button";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { WebSiteConfig } from "../../utils/config";
 
 const Formulaire = ({ exist }: any) => {
+  const form = useRef<HTMLFormElement>(null);
+  const sendEmail = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    exist
+      ? emailjs
+          .sendForm(
+            "service_se1dk3o",
+            "template_hkqcyc6",
+            form.current || "",
+            WebSiteConfig.emailPublicKey
+          )
+          .then(
+            (result) => {
+              // console.log(result.text);
+              alert("Email sent successfully!");
+              form.current?.reset();
+            },
+            (error) => {
+              // console.log(error.text);
+              alert("An Error while sending the E-mail, please try later.");
+              form.current?.reset();
+            }
+          )
+      : emailjs
+          .sendForm(
+            "service_se1dk3o",
+            "template_p2m7dvj",
+            form.current || "",
+            WebSiteConfig.emailPublicKey
+          )
+          .then(
+            (result) => {
+              // console.log(result.text);
+              alert("Email sent successfully!");
+              form.current?.reset();
+            },
+            (error) => {
+              // console.log(error.text);
+              alert("An Error while sending the E-mail, please try later.");
+              form.current?.reset();
+            }
+          );
+  };
+
   return (
     <div className='flex flex-col'>
       <div className='p-4'>
@@ -10,11 +55,12 @@ const Formulaire = ({ exist }: any) => {
         </p>
       </div>
       <form
-        id='RDV'
+        ref={form}
         className='p-4 lg:pl-32 lg:pr-32 xl:pl-32 xl:pr-32 xl:pt-10 xl:pb-10'
+        onSubmit={sendEmail}
       >
         <div className='grid sm:grid-cols-2 sm:gap-x-6'>
-          <div className=' mb-6 w-full group'>
+          <div className='mb-6 w-full group'>
             <input
               type='text'
               name='first_name'
@@ -24,7 +70,7 @@ const Formulaire = ({ exist }: any) => {
               required
             />
           </div>
-          <div className=' mb-6 w-full group'>
+          <div className='mb-6 w-full group'>
             <input
               type='text'
               name='last_name'
@@ -34,7 +80,7 @@ const Formulaire = ({ exist }: any) => {
               required
             />
           </div>
-          <div className=' mb-6 w-full group'>
+          <div className='mb-6 w-full group'>
             <input
               type='email'
               name='email'
@@ -44,7 +90,7 @@ const Formulaire = ({ exist }: any) => {
               required
             />
           </div>
-          <div className=' mb-6 w-full group'>
+          <div className='mb-6 w-full group'>
             <input
               type='number'
               pattern='[0-9]{11}'
@@ -56,7 +102,7 @@ const Formulaire = ({ exist }: any) => {
             />
           </div>
         </div>
-        <div className=' mb-6 w-full group'>
+        <div className='mb-6 w-full group'>
           <input
             type='number'
             className='block py-2.5 px-0 w-full bg-gray/70  border border-darkGray  text-blue text-sm pl-4 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer'
@@ -65,7 +111,7 @@ const Formulaire = ({ exist }: any) => {
             required
           />
         </div>
-        <div className=' mb-6 w-full group'>
+        <div className='mb-6 w-full group'>
           <input
             type='text'
             name='matricule'
@@ -76,7 +122,7 @@ const Formulaire = ({ exist }: any) => {
           />
         </div>
         <div className='grid sm:grid-cols-2 sm:gap-6'>
-          <div className=' mb-6 w-full group'>
+          <div className='mb-6 w-full group'>
             <input
               type='text'
               name='car_model'
@@ -86,7 +132,7 @@ const Formulaire = ({ exist }: any) => {
               required
             />
           </div>
-          <div className=' mb-6 w-full group'>
+          <div className='mb-6 w-full group'>
             <input
               type='text'
               name='brand_car'
@@ -104,11 +150,17 @@ const Formulaire = ({ exist }: any) => {
               <p className='text-sm text-start'>
                 J'ai lu et j'accepte{" "}
                 {exist ? (
-                  <a href="/conditions-offre-20" className='text-pink underline cursor-pointer'>
+                  <a
+                    href='/conditions-offre-20'
+                    className='text-pink underline cursor-pointer'
+                  >
                     les conditions de l’offre parrainage 20€ ZR PARE-BRISE
                   </a>
                 ) : (
-                  <a className='text-pink underline cursor-pointer'>
+                  <a
+                    href='/conditions-generales'
+                    className='text-pink underline cursor-pointer'
+                  >
                     la politique de confidentialité
                   </a>
                 )}
@@ -119,30 +171,26 @@ const Formulaire = ({ exist }: any) => {
                 <input required type='checkbox' className='rounded-md' />
                 <p className='text-sm'>
                   J'ai lu et j'accepte{" "}
-                    <span className='text-pink underline cursor-pointer'>
-                      la politique de confidentialité
-                    </span>
+                  <a
+                    href='/conditions-generales'
+                    className='text-pink underline cursor-pointer'
+                  >
+                    la politique de confidentialité
+                  </a>
                 </p>
               </div>
             )}
           </div>
-
-          <div className='sm:hidden block'>
-            <Button
-              path={false}
-              style={"px-8 py-4 text-center"}
-              name={"Envoyer"}
-            />
-          </div>
+        </div>
+        <div className='hover:-translate-y-1 flex flex-col justify-center items-center'>
+          <button
+            type='submit'
+            className={` px-8 py-4 text-center text-white bg-pink hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-xs sm:w-auto px-5 py-2.5 text-center`}
+          >
+            Envoyer
+          </button>
         </div>
       </form>
-      <div className='sm:block hidden mx-auto py-4'>
-        <Button
-          path={false}
-          style={"px-8 py-4 text-center sm:text-lg"}
-          name={"Envoyer"}
-        />
-      </div>
     </div>
   );
 };
